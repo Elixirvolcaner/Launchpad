@@ -147,3 +147,11 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Rosebud AI & OS Files
+.rosebud/
+private-*.json
+private-publish-*/
+.DS_Store
+Thumbs.db
+
