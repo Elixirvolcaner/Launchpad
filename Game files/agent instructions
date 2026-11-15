@@ -1,0 +1,31 @@
+# AGENTS.md
+
+## Project summary and core loop
+LaunchPad is a 2D browser game. Create or load a captain, choose an unlocked mission, configure its rocket, crew, supplies and equipment within budget and lift limits, then launch from the pad. Manage turn-based mission resources and event decisions in Mission Control; successful missions unlock later operations.
+
+Mission 2 (PUNCH) is one uncrewed launch carrying all four solar-observatory satellites, followed by staged deployment and commissioning. The game uses simplified, turn-based resource and event mechanics rather than real orbital or rigid-body physics.
+
+## How to play / controls
+Use the mouse to click Mission Control, select and plan a mission, then click the Launch Pad to review the launch checklist and begin. In Mission Control, click the flight-log screen to open the report; use its tabs and buttons to manage resources, answer events, continue phases or recall the mission. Menus and reports use mouse input. The space-center scene is a fixed 1280×800 logical canvas scaled to the viewport; it is not a walkable/isometric world.
+
+## Important files
+- `/index.html` — entry point, CSS, UI shell and module bootstrap
+- `/main.js` — 2D Canvas space-center scene, pointer hotspots, resize/render loop and audio hooks
+- `/ui.js` — captain/save flow, mission selection and planning, crew/resource simulation, Mission Control and report UI
+- `/punch.js` — PUNCH four-satellite launch planner, deployment simulation and report visuals
+- `/data.js` — missions, rockets, supplies, crew data and balance values
+- `/artemis.js` — Artemis operations, event choices, history and lessons
+- `/sprites.js` — sprite-sheet cropping, background removal, tinting and shared character rendering
+- `/art_direction.md` — visual direction and typography guidance
+- `/sound_direction.md` — audio direction
+- `/rosebud/game-defaults.css`, `/rosebud/game-defaults.js` — platform-provided project helpers
+
+## Runtime assets
+Character sprite sheets: `assets/art.jpeg` (1312×1199, 4×2), `assets/more-art.jpeg` (1536×1024, 4×2), `assets/whatsapp-image-2026-11-14-at-14-39-38-1.jpeg` (1536×1024, 4×2), and `assets/textures.jpeg` (1536×1024, single chicken sprite).
+Scene art: `assets/simple-space-center.webp` (1536×864), `assets/illustrated-mission-control.webp` (1536×864), `assets/illustrated-space-background.webp` (1536×864), and `assets/illustrated-earth.webp` (945×928). Mission observation galleries use `assets/image.png`, `assets/image-2.png`, `assets/image-3.png`, `assets/image-5.png` through `assets/image-8.png`, and `assets/artemis-earthrise-clean.webp` (1536×1152).
+Runtime audio: `assets/audio/aqua-frutiger-aero-chillwave-532669.mp3`, `assets/audio/ui-blip.mp3`, `assets/audio/launch-rumble.mp3`, `assets/audio/mission-problem-alert.mp3`, `assets/audio/mission-success-chime.mp3`, and `assets/audio/separation-deploy.mp3`.
+All remaining image and audio assets are referenced by the game. Reference media from code using `assets/...` paths. Browsers may defer audio until a user gesture.
+
+## Persistence and implementation notes
+`data.js` is the source for mission and crew tuning. Save data uses browser-local `localStorage`; it is not uploaded, shared across players, or synced to an account. The captain and career are preserved when loading in the same browser profile, while Restart Career clears progress and restores the original roster. Active missions do not resume after closing the game. The mission simulation is an abstraction: supplies, crew health/morale, events and fuel are modeled per turn, not solved with a physical trajectory engine. Sprite sheets are JPEGs with white backgrounds; `sprites.js` removes connected background pixels, crops each grid cell and draws characters without stretching.
+
