@@ -1,0 +1,9 @@
+# Sound Direction
+- Background music: use the supplied aqua-frutiger-aero-chillwave track at `assets/audio/aqua-frutiger-aero-chillwave-532669.mp3`, looped quietly and unlocked on the first title/menu interaction.
+- SFX:
+  - UI blip (`assets/audio/ui-blip.mp3`): menus, checklists, and log entries.
+  - Mission problem alert (`assets/audio/mission-problem-alert.mp3`): original rising two-tone console warning when a new anomaly or unresolved mission problem appears.
+  - Rocket launch rumble (`assets/audio/launch-rumble.mp3`): pad ignition and liftoff sequence.
+  - Separation deploy (`assets/audio/separation-deploy.mp3`): stage separation, satellite deployment, and orbital phase transitions.
+  - Mission success chime (`assets/audio/mission-success-chime.mp3`): successful crewed mission or PUNCH satellite commissioning.
+- Audio unlocks on the first user interaction.
